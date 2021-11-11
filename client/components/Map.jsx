@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Avatar from 'react-avatar';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+import { GoogleMap, LoadScript, Marker, StandaloneSearchBox } from '@react-google-maps/api'
 
 
 const imgUrl = 'https://i.imgur.com/WTHBUgm.png';
@@ -38,9 +38,20 @@ const Map = (props) => {
 
     }
   }, [map, props.selectedLocations]);
+  const [search, setSearch] = useState(null);
+  const [place, setPlace] = useState(null);
+  const searchLoad = useCallback((ref) => setSearch(ref), []);
+  const onPlacesChanged = () => {
+    if(search) {
+      const arr = search.getPlaces()
+      console.log(arr);
+    }
+  }
+
   return (
     <LoadScript
       googleMapsApiKey='AIzaSyA0cGzN3OzHoQxpXyz9ZqqDK1psI8eTg44'
+      libraries={["places"]}
     >
       <div id="right-side-content" className='mapContainer'>
         <div id="map-container" className='mapStyles'>
@@ -58,8 +69,42 @@ const Map = (props) => {
                 </Marker>
               )
             })}
-            {<Marker key={'midpoint'} position={props.midpoint}/>}
+            {<Marker key={'midpoint'} position={props.midpoint} />}
+            <StandaloneSearchBox
+              onLoad={searchLoad}
+              onPlacesChanged={onPlacesChanged}
+              bounds={{north: props.midpoint.lat, south: props.midpoint.lat, east: props.midpoint.lng, west: props.midpoint.lng}}
+              >
+              <input
+                type="text"
+                placeholder="Search here"
+                style={{
+                  boxSizing: `border-box`,
+                  border: `1px solid transparent`,
+                  width: `240px`,
+                  height: `32px`,
+                  padding: `0 12px`,
+                  borderRadius: `3px`,
+                  boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                  fontSize: `14px`,
+                  outline: `none`,
+                  textOverflow: `ellipses`,
+                  position: "absolute",
+                  left: "50%",
+                  marginLeft: "-120px"
+                }}
+              />
+            </StandaloneSearchBox>
           </GoogleMap >
+        </div>
+        <div>
+          {/* {places.map(place => {
+            return (
+              <div className="scrollContainer">
+                Name: {place.name}, Address: {place.formatted_address}, Rating: {place.rating}
+              </div>
+            )
+          })} */}
         </div>
       </div>
     </LoadScript >
