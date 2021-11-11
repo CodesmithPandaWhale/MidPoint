@@ -14,7 +14,9 @@ const Sidebar = (props) => {
   }
 
   const imgUrl = 'https://i.imgur.com/WTHBUgm.png';
-
+  
+  let displayUsername = props.username[0].toUpperCase() + props.username.substring(1); 
+  
   return (
     <div id="sidebar" className='sidebarStyles'>
       <div id="user-info" style={{ borderBottom: '1px solid black' }}>
@@ -23,7 +25,7 @@ const Sidebar = (props) => {
           {/* shows avatar photo and user greeting */}
           <Avatar className="avatar" size='30px' color='black' name={props.username} />
 
-          <p className='pStyles'>Welcome back, {props.username}!</p>
+          <p className='pStyles'>Welcome back, {displayUsername}!</p>
 
         </div>
 
@@ -57,7 +59,7 @@ const Sidebar = (props) => {
       </div>
 
       <div id="friend-list" className='center'>
-        <p className="latlng">Friends:</p>
+        <p className="latlng">Friends List:</p>
         {/* dropdown populated with users from friends list */}
 
         <div className='scrollContainer'>{props.friendsList.map((friend) => {

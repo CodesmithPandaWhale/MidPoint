@@ -1,9 +1,11 @@
 #app {
   display: flex;
-  background: $DarkBlueBG;
+  background: rgb(22, 153, 182);
   height: 100%;
   align-items: top;
   justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .loginStyles {
@@ -11,19 +13,21 @@
   flex-direction: column;
   align-items: center;
 
+
+
   img {
     margin-bottom: 1em;
   };
 
   button {
-    background-color: $Olive;
-    color: $DarkBlue;
+    background: rgb(67, 124, 136);
+    color: white;
     font-size: 2em;
     height: 3rem;
     border-radius: 15px;
-    border-style: none;
-    box-shadow: 1px 2px 5px 1px lightcoral;
+    border: solid 3px rgb(206, 199, 199);
     min-width: 150px;
+    margin: 5px;
 
     &:hover {
       background-color: $DarkBlue;
@@ -41,7 +45,14 @@
 
   h1 {
     font-size: 5rem;
-    color: $Olive;
+    color: white;
+    margin: 5px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  h2 {
+    font-size: 3rem;
+    color: white;
+    margin: 5px;
   }
 }
 
@@ -59,6 +70,8 @@
   height: 600px;
   width: 1000px;
   margin: 12px 0px;
+  box-shadow: 2px 2px 2px 2px rgb(22, 153, 182);
+
 }
 
 .mapContainer {
@@ -77,10 +90,11 @@
   flex-direction: column;
   align-content: center;
   justify-content: space-around;
-  background-color: $Olive;
+  background-color: rgb(22, 153, 182);
+  color: white;
   width: 21%;
   height: 95%;
-  border: 1px solid black;
+  border: 5px solid rgb(0, 173, 211);
   border-radius: 6px;
   margin: 10px 0px 0px 6px;
   padding-left: 0.5em;
@@ -97,13 +111,12 @@
   }
 
   button {
-    background-color: $DarkBlue;
-    color: $Olive;
+    background-color: rgb(22, 121, 182);
+    border: solid 1px grey;
+    color: white;
     font-size: 1em;
     
     border-radius: 15px;
-    border-style: none;
-    box-shadow: 1px 2px 5px 1px lightcoral;
     margin: 5px;
     
   
@@ -129,6 +142,9 @@
     overflow: scroll;
     width: inherit;
     padding: 10px;
+    background-color: rgb(210, 195, 163);
+    border-radius: 20px;
+
   }
 }
 
@@ -180,4 +196,7 @@
   align-items: center;
   justify-content: auto;
   padding: 5px;
+}
+
+#friend-list{
 }
