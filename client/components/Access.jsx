@@ -55,8 +55,8 @@ export const Access = ({ addSelected, pageToDisplay, currentUser, selectedLocati
   // Log In Page
   if (pageToDisplay === 'login') return (
     <div className='loginStyles'>
-
-      <h1>Login Page</h1>
+      <h1>Welcome to Halfway</h1>
+      <h2>Login Page</h2>
       <img src='https://i.imgur.com/YQ3shad.png' />
       <input
         name="username"
@@ -72,8 +72,9 @@ export const Access = ({ addSelected, pageToDisplay, currentUser, selectedLocati
         value={password}
         onChange={(event) => onChangeHandler(event)}
       />
-      <button onClick={() => logIn(username, password)}>Login</button>
-      <button onClick={pageToSignup}>Sign-up</button>
+    
+      <span><button onClick={() => logIn(username, password)}>Login</button>
+      <button onClick={pageToSignup}>Sign-up</button></span>
 
     </div>
   );
@@ -91,8 +92,8 @@ export const Access = ({ addSelected, pageToDisplay, currentUser, selectedLocati
       <input name="password" id="password" value={password} type="password" placeholder="Password" onChange={(event) => onChangeHandler(event)}></input>
       <input name="address" id="address" value={address} type="text" placeholder="45 main street" onChange={(event) => onChangeHandler(event)}></input>
 
-      <button onClick={() => { if ((username || password || address) !== '') signUpUser(username, password, address) }}>Create an account</button>
-      <button onClick={signUpCancel}>Cancel</button>
+      <span><button onClick={() => { if ((username || password || address) !== '') signUpUser(username, password, address) }}>Submit</button>
+      <button onClick={signUpCancel}>Cancel</button></span>
     </div>
   );
 
